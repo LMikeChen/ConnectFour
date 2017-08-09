@@ -7,6 +7,6 @@ namespace Common.Interface
     public interface IPlayer : IComparable
     {
         string PlayerName { get; }
-        int PlayerID { get; }
+        char PlayerID { get; }
     }
 }

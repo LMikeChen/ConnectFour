@@ -1,28 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Common.Data;
 using Common.Interface;
 
 namespace ConnectFourGameEngine.Data
 {
     public class ConnectFourBoard : IGameBoard
     {
-       
+        private int sequenceID = 0;
         public ConnectFourBoard(int rows, int columns)
         {
             this.Rows = rows;
             this.Columns = columns;
-            this.BoardData = new IMove[Rows, Columns];
+            this.GameMoves = new IMove[Rows, Columns];
         }
         public int Rows { get; private set; }
 
         public int Columns { get; private set; }
 
-        public IMove[,] BoardData { get; private set; }
+        public char[,] BoardData {
+            get
+            {
+              char[,]   board = new char[Rows, Columns];
+
+                for (int i = 0; i < Rows; ++i)
+                {
+                    for (int j = 0; i < Columns; ++j)
+                    {
+                        IMove move = GameMoves[i, j];
+                        if (move != null)
+                        {
+                            board[i, j] = move.Player.PlayerID;
+                        }
+                        else
+                        {
+                            board[i, j] = ' ';
+                        }
+                    }
+                }
+
+              return board;
+            }}
 
         public IMoveResult Put(IPlayer player, int column)
         {
-            return null;
+            for (int i = Rows -1; i >= 0; --i)
+            {
+                if (GameMoves[i, column] == null)
+                {
+                    ConnectMove move = new ConnectMove(player, sequenceID++, i, column);
+
+                    IMoveResult result = new MoveResult(move);
+
+                    return result;
+                }
+            }
+
+            // Failed result;
+            return new MoveResult();
         }
+
+        private IMove[,] GameMoves { get; set; }
     }
 }

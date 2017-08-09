@@ -11,6 +11,6 @@ namespace Common.Interface
 
         IMoveResult Put(IPlayer player, int column);
 
-        IMove[,] BoardData { get; }
+        char[,] BoardData { get; }
     }
 }

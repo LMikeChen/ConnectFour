@@ -10,5 +10,7 @@ namespace Common.Interface
         int SequenceNumber { get; }
         int RowIndex { get; }
         int ColumnIndex { get; }
+
+        bool IsValid { get; }
     }
 }
