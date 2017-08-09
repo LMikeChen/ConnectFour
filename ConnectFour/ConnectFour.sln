@@ -1,15 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectFourGameEngine", "ConnectFour\ConnectFourGameEngine.csproj", "{C01EDE28-39FA-494D-86D7-43BCA2F8A543}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectFourGameEngine", "ConnectFour\ConnectFourGameEngine.csproj", "{C01EDE28-39FA-494D-86D7-43BCA2F8A543}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2E5A0CEA-0E6C-41E5-AAA9-9A9894156852} = {2E5A0CEA-0E6C-41E5-AAA9-9A9894156852}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandardAI", "StandardAI\StandardAI.csproj", "{91E2C922-0800-4100-9DB4-1A967A53BCE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StandardAI", "StandardAI\StandardAI.csproj", "{91E2C922-0800-4100-9DB4-1A967A53BCE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{2E5A0CEA-0E6C-41E5-AAA9-9A9894156852}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{2E5A0CEA-0E6C-41E5-AAA9-9A9894156852}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connect4ConsoleUI", "Connect4ConsoleUI\Connect4ConsoleUI.csproj", "{FE9E5ED7-23E6-44C3-9E9C-1EBE1DFC702B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C01EDE28-39FA-494D-86D7-43BCA2F8A543} = {C01EDE28-39FA-494D-86D7-43BCA2F8A543}
+		{2E5A0CEA-0E6C-41E5-AAA9-9A9894156852} = {2E5A0CEA-0E6C-41E5-AAA9-9A9894156852}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

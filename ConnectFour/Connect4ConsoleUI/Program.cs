@@ -10,6 +10,7 @@ namespace Connect4ConsoleUI
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
