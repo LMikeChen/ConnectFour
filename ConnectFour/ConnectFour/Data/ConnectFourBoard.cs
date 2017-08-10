@@ -4,7 +4,7 @@ using System.Text;
 using Common.Data;
 using Common.Interface;
 
-namespace ConnectFourGameEngine.Data
+namespace GameEngine.Data
 {
     public class ConnectFourBoard : IGameBoard
     {
@@ -26,7 +26,7 @@ namespace ConnectFourGameEngine.Data
 
                 for (int i = 0; i < Rows; ++i)
                 {
-                    for (int j = 0; i < Columns; ++j)
+                    for (int j = 0; j< Columns; ++j)
                     {
                         IMove move = GameMoves[i, j];
                         if (move != null)
@@ -50,7 +50,7 @@ namespace ConnectFourGameEngine.Data
                 if (GameMoves[i, column] == null)
                 {
                     ConnectMove move = new ConnectMove(player, sequenceID++, i, column);
-
+                    GameMoves[i, column] = move;
                     IMoveResult result = new MoveResult(move);
 
                     return result;

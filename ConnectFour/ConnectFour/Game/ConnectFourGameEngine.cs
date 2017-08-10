@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ConnectFourGameEngine.Interface;
 using Common.Interface;
-using ConnectFourGameEngine.Data;
+using GameEngine.Interface;
+using GameEngine.Data;
 
-namespace ConnectFourGameEngine.Game
+namespace CGameEngine.Game
 {
     public class ConnectFourGameEngine : IGameEngine
     {
@@ -15,6 +15,24 @@ namespace ConnectFourGameEngine.Game
             gameBoard = new ConnectFourBoard(rows, columns);
         }
         
+        public char[,] BoardData { get { return gameBoard.BoardData; } }
 
+        public IMoveResult ProcessMove(IPlayer player, int column)
+        {
+            IMoveResult result = gameBoard.Put(player, column);
+
+            if(result.Success)
+            {
+                result.IsGameOver = IsWinningMove(result.Move);
+            }
+            return result;
+        }
+
+        private bool IsWinningMove(IMove move)
+        {
+            
+
+            return false;
+        }
     }
 }

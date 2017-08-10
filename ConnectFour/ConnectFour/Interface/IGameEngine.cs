@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Common.Interface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConnectFourGameEngine.Interface
+namespace GameEngine.Interface
 {
     public interface IGameEngine
     {
+        char[,] BoardData { get; }
+
+        IMoveResult ProcessMove(IPlayer player, int column);
     }
 }

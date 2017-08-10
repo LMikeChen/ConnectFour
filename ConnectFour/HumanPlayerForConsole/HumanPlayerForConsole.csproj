@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE9E5ED7-23E6-44C3-9E9C-1EBE1DFC702B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Connect4ConsoleUI</RootNamespace>
-    <AssemblyName>Connect4ConsoleUI</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ProjectGuid>{3C25C46E-25AB-4ACF-8B43-5A1898FCEC1D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HumanPlayerForConsole</RootNamespace>
+    <AssemblyName>HumanPlayerForConsole</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,26 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\GameController.cs" />
-    <Compile Include="Game\GameDisplay.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Player\HumanPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{2E5A0CEA-0E6C-41E5-AAA9-9A9894156852}</Project>
       <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ConnectFour\GameEngine.csproj">
-      <Project>{C01EDE28-39FA-494D-86D7-43BCA2F8A543}</Project>
-      <Name>GameEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HumanPlayerForConsole\HumanPlayerForConsole.csproj">
-      <Project>{3C25C46E-25AB-4ACF-8B43-5A1898FCEC1D}</Project>
-      <Name>HumanPlayerForConsole</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

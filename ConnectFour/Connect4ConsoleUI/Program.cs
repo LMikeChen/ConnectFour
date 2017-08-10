@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CGameEngine.Game;
+using Connect4ConsoleUI.Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,11 @@ namespace Connect4ConsoleUI
     {
         static void Main(string[] args)
         {
+            ConnectFourGameEngine gameEngine = new ConnectFourGameEngine(6, 7);
+            GameDisplay display = new GameDisplay();
+            GameController gc = new GameController(display, gameEngine);
 
+            gc.Start();
         }
     }
 }
