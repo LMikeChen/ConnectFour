@@ -8,6 +8,7 @@ namespace Common.Interface
     {
         bool Success { get; }
         bool IsGameOver { get; set; }
+        bool IsTie { get; set; }
         IPlayer Winner { get; }
         IMove Move { get; }
     }

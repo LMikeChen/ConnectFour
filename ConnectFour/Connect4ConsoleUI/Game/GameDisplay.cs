@@ -48,5 +48,23 @@ namespace Connect4ConsoleUI.Game
         {
             Console.Clear();
         }
+
+        public void DelcareWinner(IMoveResult result)
+        {
+            Console.WriteLine(string.Format("Player {0} has won the game in {1} moves!", result.Move.Player.PlayerID, result.Move.SequenceNumber));
+            
+        }
+
+        public void DelcareTie()
+        {
+            Console.WriteLine(string.Format("The game is a tie, well fought players!"));
+
+        }
+
+        public void WaitToQuit()
+        {
+            Console.WriteLine(string.Format("Hit any key to exit game"));
+            Console.Read();
+        }
     }
 }

@@ -43,6 +43,20 @@ namespace Connect4ConsoleUI.Game
                 if (result.Success)
                 {
                     player1Turn = !player1Turn;
+                    if(result.IsGameOver)
+                    {
+                        display.ClearScreen();
+                        display.ShowBoard(gameEngine.BoardData);
+                        display.DelcareWinner(result);
+                        break;
+                    }
+                    else if(result.IsTie)
+                    {
+                        display.ClearScreen();
+                        display.ShowBoard(gameEngine.BoardData);
+                        display.DelcareTie();
+                        break;
+                    }
                 }
                 else if(!result.Success && result.IsGameOver)
                 {
@@ -50,6 +64,8 @@ namespace Connect4ConsoleUI.Game
                 }
                 display.ClearScreen();
             }
+
+            display.WaitToQuit();
             
         }
 

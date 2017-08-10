@@ -23,6 +23,8 @@ namespace Common.Data
 
         public bool IsGameOver { get; set; }
 
+        public bool IsTie { get; set; }
+
         public IPlayer Winner { get; set; }
 
         public IMove Move { get; private set; }

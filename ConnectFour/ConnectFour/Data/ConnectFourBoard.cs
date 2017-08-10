@@ -19,6 +19,8 @@ namespace GameEngine.Data
 
         public int Columns { get; private set; }
 
+        public int BoardSize { get { return Rows * Columns; } }
+
         public char[,] BoardData {
             get
             {

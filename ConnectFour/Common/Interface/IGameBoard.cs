@@ -9,8 +9,11 @@ namespace Common.Interface
         int Rows { get; }
         int Columns { get; }
 
+        int BoardSize { get; }
         IMoveResult Put(IPlayer player, int column);
 
         char[,] BoardData { get; }
+
+        
     }
 }
