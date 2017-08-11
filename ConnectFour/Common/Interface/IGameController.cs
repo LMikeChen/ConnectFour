@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Common.Interface
 {
-    public interface IGameModerator
+    public interface IGameController
     {
     }
 }

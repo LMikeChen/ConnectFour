@@ -48,6 +48,15 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -64,6 +73,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -115,9 +127,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="GameController\ConnectGameController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -142,6 +156,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="SPA\Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{2E5A0CEA-0E6C-41E5-AAA9-9A9894156852}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConnectFour\GameEngine.csproj">
+      <Project>{C01EDE28-39FA-494D-86D7-43BCA2F8A543}</Project>
+      <Name>GameEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
