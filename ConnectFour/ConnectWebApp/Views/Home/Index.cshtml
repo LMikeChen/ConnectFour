@@ -1,0 +1,52 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="~/css/bootstrap.theme.min.css" rel="stylesheet" />
+
+
+
+    <script src="~/SPA/Controller/MainController.js"></script>
+    <script src="~/SPA/App.js"></script>
+
+    <title>Index</title>
+
+</head >
+<body>
+     <div ng-app="App" ng-controller="MainController">
+         <span>sdfsd{{myVariable}}</span>
+         <span>sdfsd{{selectedLocation}}</span>
+         <div>
+             <ul>
+                 <li>
+                     <i ng-repeat="y in models.columnIds">
+                         <button type="button" class="btn btn-default" ng-click="inputMove(y)"> {{y}} </button>
+                     </i>
+
+                 </li>
+            </ul>
+        </div>
+         <div>
+                <ol>
+                   
+                    <li ng-repeat="row in models.gameBoard">
+                        <i ng-repeat="col in row track by $index">
+                            <button type="button" class="btn btn-default">{{col}}</button>
+                        </i>
+
+                    </li>
+                </ol>
+         </div>
+     </div>
+</body>
+</html >

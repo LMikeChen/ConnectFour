@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanPlayerForConsole", "Hu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegularAIPlayer", "RegularAIPlayer\RegularAIPlayer.csproj", "{37A77748-9B62-434C-B27D-30283F9551F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectWebApp", "ConnectWebApp\ConnectWebApp.csproj", "{EA1A96BE-A083-4AAE-A61E-ADD216FB93B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{37A77748-9B62-434C-B27D-30283F9551F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37A77748-9B62-434C-B27D-30283F9551F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37A77748-9B62-434C-B27D-30283F9551F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA1A96BE-A083-4AAE-A61E-ADD216FB93B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA1A96BE-A083-4AAE-A61E-ADD216FB93B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA1A96BE-A083-4AAE-A61E-ADD216FB93B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA1A96BE-A083-4AAE-A61E-ADD216FB93B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
