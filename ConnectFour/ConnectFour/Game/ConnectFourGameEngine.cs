@@ -8,9 +8,12 @@ namespace GameEngine.Game
     public class ConnectFourGameEngine : IGameEngine
     {
         private IGameBoard gameBoard;
+        private bool isGameOver;
+        private IMoveResult winningResult;
         public ConnectFourGameEngine(int rows, int columns)
         {
             gameBoard = new ConnectFourBoard(rows, columns);
+            isGameOver = false;
         }
 
         #region interfaces 
@@ -24,21 +27,31 @@ namespace GameEngine.Game
 
         public IMoveResult ProcessMove(IPlayer player, int column)
         {
-            IMoveResult result = gameBoard.Put(player, column);
-
-            if(result.MoveResultStatus == MoveResultStatus.Success)
+            if (!isGameOver)
             {
-                if(IsWinningMove(result.Move))
+                IMoveResult result = gameBoard.Put(player, column);
+
+                if (result.MoveResultStatus == MoveResultStatus.Success)
                 {
-                    result.MoveResultStatus = MoveResultStatus.GameOver;
+                    if (IsWinningMove(result.Move))
+                    {
+                        result.MoveResultStatus = MoveResultStatus.GameOver;
+                        winningResult = result;
+                        isGameOver = true;
+                    }
+                    else if (result.Move.SequenceNumber >= gameBoard.BoardSize - 1)
+                    {
+                        result.MoveResultStatus = MoveResultStatus.GameTie;
+                    }
+
                 }
-                else if(result.Move.SequenceNumber >= gameBoard.BoardSize -1)
-                {
-                    result.MoveResultStatus = MoveResultStatus.GameTie;   
-                }
-                
+                return result;
             }
-            return result;
+            else
+            {
+                return winningResult;
+            }
+            
         }
 
         #endregion

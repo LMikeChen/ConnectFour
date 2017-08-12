@@ -7,7 +7,7 @@
         columnIds: [],
         gameBoard: [],
     };
-    $scope.boardDimensionTest = "Nothing now";
+    $scope.gameInstruction = "Player 1 click a column number to start";
 
     var boardDimensionUrl = location.origin + "/api/BoardDimension"
     $scope.getDimension = function () {
@@ -42,36 +42,44 @@
             .then(function (response) {
                 if (response.data)
                 {
-
                     $scope.boardDimensionTest = response;
 
                     var moveResultStatus = response.data.MoveResultStatus;
-
+                    var move = response.data.Move;
                     if (moveResultStatus == 0) {
-                        var rowIndex = response.data.Move.RowIndex;
-                        var player = response.data.Move.Player;
+                        var rowIndex = move.RowIndex;
+                        var colIndex = move.ColumnIndex;
+                        var player = move.Player;
                         var playerId = player.PlayerID;
-                        //var playerID = response.data.Player.PlayerID;
-                        $scope.models.gameBoard[rowIndex][columnId] = playerId;
+                        $scope.models.gameBoard[rowIndex][colIndex] = playerId;
+                        $scope.gameInstruction = "Next player please make a move";
                     }
-
-                    
-
+                    else if (moveResultStatus == 1)
+                    {
+                        var rowIndex = move.RowIndex;
+                        var colIndex = move.ColumnIndex;
+                        var player = move.Player;
+                        var playerId = player.PlayerID;
+                        $scope.models.gameBoard[rowIndex][colIndex] = playerId;
+                        $scope.gameInstruction = player.PlayerName + " has won the game in " + move.SequenceNumber + " moves!";
+                    }
+                    else if (moveResultStatus == 4)
+                    {
+                        $scope.gameInstruction = "Invalid move, please try again.";
+                    }
+                    else if (moveResultStatus == 3)
+                    {
+                        $scope.gameInstruction = "Tie game! Good luck next time!";
+                    }
                 }
                 else
                 {
-                    $scope.boardDimensionTest = "Input request failed";
+                    $scope.gameInstruction = "Input request failed";
                 }
                 
 
             });
-        
-        //for (i = $scope.models.rows - 1; i >= 0; i--) {
-        //    if ($scope.models.gameBoard[i][columnId] === "#") {
-        //        $scope.models.gameBoard[i][columnId] = "O";
-        //        break;
-        //    }
-        //}
+
     }
 }
 
