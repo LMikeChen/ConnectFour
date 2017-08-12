@@ -9,6 +9,10 @@ namespace GameEngine.Interface
     {
         char[,] BoardData { get; }
 
+        int BoardRows { get; }
+
+        int BoardColumns { get; }
+
         IMoveResult ProcessMove(IPlayer player, int column);
     }
 }

@@ -1,4 +1,4 @@
-﻿using CGameEngine.Game;
+﻿using GameEngine.Game;
 using Common.Interface;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,10 @@ namespace ConnectWebApp.GameController
         {
             gameEngine = new ConnectFourGameEngine(6, 7);
         }
+
+        public int BoardRows { get { return gameEngine.BoardRows; } }
+
+        public int BoardColumns { get { return gameEngine.BoardColumns; } }
 
         public IMoveResult ProcessMove(IPlayer player, int column)
         {

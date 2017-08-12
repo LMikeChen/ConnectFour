@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using static Common.Data.Enums;
 
 namespace Common.Interface
 {
     public interface IMoveResult
     {
-        bool Success { get; }
-        bool IsGameOver { get; set; }
-        bool IsTie { get; set; }
+        MoveResultStatus MoveResultStatus { get; set; }
         IPlayer Winner { get; }
         IMove Move { get; }
     }

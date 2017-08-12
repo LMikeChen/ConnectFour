@@ -9,6 +9,14 @@ namespace Connect4ConsoleUI.Game
 {
     public class GameDisplay
     {
+        private IPlayer player1;
+        private IPlayer player2;
+
+        public GameDisplay(IPlayer p1, IPlayer p2)
+        {
+            player1 = p1;
+            player2 = p2;
+        }
         public void ShowStartMessage()
         {
             Console.WriteLine("Welcome to Connect Four.");
@@ -19,22 +27,29 @@ namespace Connect4ConsoleUI.Game
 
             int rows = gameData.GetLength(0);
             int columns = gameData.GetLength(1);
-
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("  0 1 2 3 4 5 6");
+            
+            Console.WriteLine("  0 1 2 3 4 5 6");
             for (int i = 0; i < rows; ++i)
             {
-                sb.Append(i);
+                Console.Write(i);
                 for(int j = 0; j < columns; ++j)
                 {
-                    sb.Append(string.Format("|{0}", gameData[i, j]));
+                    Console.Write("|");
+                    if (gameData[i, j] == player1.PlayerID)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    }
+                    if (gameData[i, j] == player2.PlayerID)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                    }
+                    Console.Write( gameData[i, j]);
 
-                    
+                    Console.ResetColor();
                 }
-                sb.AppendLine("|");
+                Console.WriteLine("|");
             }
-
-            Console.WriteLine(sb.ToString());
+            
             
         }
 

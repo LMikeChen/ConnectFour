@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Common.Interface;
+﻿using Common.Interface;
 using GameEngine.Interface;
 using GameEngine.Data;
+using static Common.Data.Enums;
 
-namespace CGameEngine.Game
+namespace GameEngine.Game
 {
     public class ConnectFourGameEngine : IGameEngine
     {
@@ -14,27 +12,36 @@ namespace CGameEngine.Game
         {
             gameBoard = new ConnectFourBoard(rows, columns);
         }
-        
+
+        #region interfaces 
+
+        public int BoardRows { get { return gameBoard.Rows; } }
+
+        public int BoardColumns { get { return gameBoard.Columns; } }
+
+
         public char[,] BoardData { get { return gameBoard.BoardData; } }
 
         public IMoveResult ProcessMove(IPlayer player, int column)
         {
             IMoveResult result = gameBoard.Put(player, column);
 
-            if(result.Success)
+            if(result.MoveResultStatus == MoveResultStatus.Success)
             {
                 if(IsWinningMove(result.Move))
                 {
-                    result.IsGameOver = true;
+                    result.MoveResultStatus = MoveResultStatus.GameOver;
                 }
                 else if(result.Move.SequenceNumber >= gameBoard.BoardSize -1)
                 {
-                    result.IsTie = true;   
+                    result.MoveResultStatus = MoveResultStatus.GameTie;   
                 }
                 
             }
             return result;
         }
+
+        #endregion
 
         private bool IsWinningMove(IMove move)
         {
@@ -222,3 +229,4 @@ namespace CGameEngine.Game
 
     }
 }
+

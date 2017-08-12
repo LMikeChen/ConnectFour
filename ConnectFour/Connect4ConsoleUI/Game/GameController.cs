@@ -1,4 +1,6 @@
-﻿using Common.Data;
+﻿
+using GameEngine.Game;
+using Common.Data;
 using Common.Interface;
 using GameEngine.Interface;
 using HumanPlayerForConsole.Player;
@@ -13,14 +15,16 @@ namespace Connect4ConsoleUI.Game
         private IPlayer player1;
         private IPlayer player2;
         private readonly int MaxValidColumn;
-        public GameController(GameDisplay gameDisplay, IGameEngine gameEngine)
+        public GameController()
         {
-            this.display = gameDisplay;
+            gameEngine = new ConnectFourGameEngine(6, 7);
+            
             this.gameEngine = gameEngine;
             this.MaxValidColumn = gameEngine.BoardData.GetLength(1);
             player1 = new HumanPlayer("Player1", 'X');
             player2 = new HumanPlayer("Player1", 'O');
-            
+
+            display = new GameDisplay(player1, player2);
         }
         public void Start()
         {
@@ -40,28 +44,31 @@ namespace Connect4ConsoleUI.Game
                 string move = currentPlayer.MakeMove();
 
                 IMoveResult result = ExecutePlayerMove(move, currentPlayer);
-                if (result.Success)
+                if (result.MoveResultStatus == Enums.MoveResultStatus.GameOver)
+                {
+                    display.ClearScreen();
+                    display.ShowBoard(gameEngine.BoardData);
+                    display.DelcareWinner(result);
+                    break;
+                   
+                }
+                else if(result.MoveResultStatus == Enums.MoveResultStatus.GameTie)
+                {
+                    display.ClearScreen();
+                    display.ShowBoard(gameEngine.BoardData);
+                    display.DelcareTie();
+                    break;
+                }
+                else if(result.MoveResultStatus != Enums.MoveResultStatus.InValidMove)
                 {
                     player1Turn = !player1Turn;
-                    if(result.IsGameOver)
-                    {
-                        display.ClearScreen();
-                        display.ShowBoard(gameEngine.BoardData);
-                        display.DelcareWinner(result);
-                        break;
-                    }
-                    else if(result.IsTie)
-                    {
-                        display.ClearScreen();
-                        display.ShowBoard(gameEngine.BoardData);
-                        display.DelcareTie();
-                        break;
-                    }
                 }
-                else if(!result.Success && result.IsGameOver)
+                else if(result.MoveResultStatus == Enums.MoveResultStatus.UserQuit)
                 {
                     break;
                 }
+               
+
                 display.ClearScreen();
             }
 
@@ -81,7 +88,7 @@ namespace Connect4ConsoleUI.Game
                     case 'q':
                     case 'Q':
                         MoveResult moveResult = new MoveResult();
-                        moveResult.IsGameOver = true;
+                        moveResult.MoveResultStatus = Enums.MoveResultStatus.UserQuit;
                         return moveResult;
                     default:
                         

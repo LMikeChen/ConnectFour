@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿
 using Common.Interface;
+using static Common.Data.Enums;
 
 namespace Common.Data
 {
@@ -11,19 +9,15 @@ namespace Common.Data
         public MoveResult(IMove move)
         {
             this.Move = move;
-            this.Success = true;
+            this.MoveResultStatus = MoveResultStatus.Success;
         }
 
         public MoveResult()
         {
-            this.Success = false;
+            this.MoveResultStatus = MoveResultStatus.InValidMove;
         }
 
-        public bool Success { get; private set; }
-
-        public bool IsGameOver { get; set; }
-
-        public bool IsTie { get; set; }
+        public MoveResultStatus MoveResultStatus { get; set; }
 
         public IPlayer Winner { get; set; }
 
