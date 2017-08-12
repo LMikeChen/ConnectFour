@@ -57,6 +57,9 @@
     <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Web.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -128,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIs\BoardDimensionController.cs" />
+    <Compile Include="APIs\MoveController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -136,6 +140,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Player\WebPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +167,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{2E5A0CEA-0E6C-41E5-AAA9-9A9894156852}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Connect4ConsoleUI\Connect4ConsoleUI.csproj">
+      <Project>{FE9E5ED7-23E6-44C3-9E9C-1EBE1DFC702B}</Project>
+      <Name>Connect4ConsoleUI</Name>
     </ProjectReference>
     <ProjectReference Include="..\ConnectFour\GameEngine.csproj">
       <Project>{C01EDE28-39FA-494D-86D7-43BCA2F8A543}</Project>

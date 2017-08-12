@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Game\GameController.cs" />
     <Compile Include="Game\GameDisplay.cs" />
+    <Compile Include="Game\HumanPlayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,10 +60,6 @@
     <ProjectReference Include="..\ConnectFour\GameEngine.csproj">
       <Project>{C01EDE28-39FA-494D-86D7-43BCA2F8A543}</Project>
       <Name>GameEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HumanPlayerForConsole\HumanPlayerForConsole.csproj">
-      <Project>{3C25C46E-25AB-4ACF-8B43-5A1898FCEC1D}</Project>
-      <Name>HumanPlayerForConsole</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

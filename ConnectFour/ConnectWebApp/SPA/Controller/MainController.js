@@ -32,18 +32,46 @@
         
     }
     $scope.models.gameBoard = board;
-
-    $scope.inputMove = function (columId)
+    
+   
+    $scope.inputMove = function (columnId)
     {
+        var moveUrl = location.origin + "/api/Move/" + columnId;
+    
+        $http.put(moveUrl, JSON.stringify(columnId))
+            .then(function (response) {
+                if (response.data)
+                {
 
-        $scope.getDimension();
+                    $scope.boardDimensionTest = response;
 
-        for (i = $scope.models.rows -1 ; i >= 0 ; i--) {
-            if ($scope.models.gameBoard[i][columId] == "#") {
-                $scope.models.gameBoard[i][columId] = "O";
-                break;
-            }
-        }
+                    var moveResultStatus = response.data.MoveResultStatus;
+
+                    if (moveResultStatus == 0) {
+                        var rowIndex = response.data.Move.RowIndex;
+                        var player = response.data.Move.Player;
+                        var playerId = player.PlayerID;
+                        //var playerID = response.data.Player.PlayerID;
+                        $scope.models.gameBoard[rowIndex][columnId] = playerId;
+                    }
+
+                    
+
+                }
+                else
+                {
+                    $scope.boardDimensionTest = "Input request failed";
+                }
+                
+
+            });
+        
+        //for (i = $scope.models.rows - 1; i >= 0; i--) {
+        //    if ($scope.models.gameBoard[i][columnId] === "#") {
+        //        $scope.models.gameBoard[i][columnId] = "O";
+        //        break;
+        //    }
+        //}
     }
 }
 

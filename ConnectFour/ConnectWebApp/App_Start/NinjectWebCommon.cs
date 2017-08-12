@@ -12,6 +12,8 @@ namespace ConnectWebApp.App_Start
     using Ninject.Web.Common;
     using Common.Interface;
     using ConnectWebApp.GameController;
+    using System.Web.Http;
+    using Ninject.Web.WebApi;
 
     public static class NinjectWebCommon 
     {
@@ -46,8 +48,9 @@ namespace ConnectWebApp.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel); ;
                 RegisterServices(kernel);
+
                 return kernel;
             }
             catch
@@ -63,7 +66,7 @@ namespace ConnectWebApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IGameController>().To<ConnectGameController>();
+            kernel.Bind<IGameController>().To<ConnectGameController>().InSingletonScope();
         }        
     }
 }

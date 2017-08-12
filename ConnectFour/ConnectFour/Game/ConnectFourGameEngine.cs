@@ -136,7 +136,6 @@ namespace GameEngine.Game
                 }
             }
             return count;
-            return 0;
         }
 
         private int CheckUpLeft(char playerId, int rowIndex, int colIndex, char[,] boardData)

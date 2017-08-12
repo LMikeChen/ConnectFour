@@ -3,8 +3,7 @@ using GameEngine.Game;
 using Common.Data;
 using Common.Interface;
 using GameEngine.Interface;
-using HumanPlayerForConsole.Player;
-
+using Connect4ConsoleUI.Game.Player;
 
 namespace Connect4ConsoleUI.Game
 {
@@ -12,8 +11,8 @@ namespace Connect4ConsoleUI.Game
     {
         private GameDisplay display;
         private IGameEngine gameEngine;
-        private IPlayer player1;
-        private IPlayer player2;
+        private HumanPlayer player1;
+        private HumanPlayer player2;
         private readonly int MaxValidColumn;
         public GameController()
         {
@@ -38,7 +37,7 @@ namespace Connect4ConsoleUI.Game
                 display.AskForMove(player1Turn ? player1 : player2);
 
                
-                IPlayer currentPlayer = player1Turn ? player1 : player2;
+                HumanPlayer currentPlayer = player1Turn ? player1 : player2;
 
                 //IMoveResult result = ExecutePlayerMove(input, player1Turn ? player1 : player2);
                 string move = currentPlayer.MakeMove();

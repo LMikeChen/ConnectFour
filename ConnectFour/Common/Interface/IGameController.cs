@@ -10,7 +10,7 @@ namespace Common.Interface
 
        int BoardColumns { get; }
 
-        IMoveResult ProcessMove(IPlayer player, int column);
+        IMoveResult ProcessMove( int column);
        
     }
 }

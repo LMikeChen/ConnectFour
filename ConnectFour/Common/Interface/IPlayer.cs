@@ -8,6 +8,5 @@ namespace Common.Interface
     {
         string PlayerName { get; }
         char PlayerID { get; }
-        string MakeMove();
     }
 }
