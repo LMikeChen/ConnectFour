@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AIPlayerImp\AIPlayer.cs" />
+    <Compile Include="AIPlayerImp\AIPlayerMoveController.cs" />
+    <Compile Include="Data\CalculationResult.cs" />
+    <Compile Include="Interface\ICalculationResult.cs" />
     <Compile Include="Interface\IPlayerMoveController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebPlayerImp\WebPlayer.cs" />

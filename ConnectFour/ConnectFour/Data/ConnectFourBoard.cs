@@ -37,7 +37,7 @@ namespace GameEngine.Data
                         }
                         else
                         {
-                            board[i, j] = ' ';
+                            board[i, j] = Utilities.EmpptyCell;
                         }
                     }
                 }

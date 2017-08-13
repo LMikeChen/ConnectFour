@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Common.Interface
 {
-    public interface IPlayer : IComparable
+    public interface IPlayer
     {
         string PlayerName { get; }
         char PlayerID { get; }

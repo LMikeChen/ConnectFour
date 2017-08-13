@@ -13,24 +13,5 @@ namespace Players.WebPlayerImp
 
         public char PlayerID { get; private set; }
 
-        public int CompareTo(object obj)
-        {
-            char otherID = (char)obj;
-
-
-            if (this.PlayerID == otherID)
-            {
-                return 0;
-            }
-            else if (this.PlayerID > otherID)
-            {
-                return 1;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-
     }
 }

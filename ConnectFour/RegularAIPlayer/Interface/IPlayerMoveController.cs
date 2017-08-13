@@ -17,6 +17,7 @@ namespace Players.Interface
 
         void Reset();
 
+        IPlayer[] Players { get; }
 
     }
 }

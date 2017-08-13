@@ -2,6 +2,7 @@
 using Common.Interface;
 using Players.WebPlayerImp;
 using Players.Interface;
+using Players.AIPlayerImp;
 
 namespace ConnectWebApp.GameController
 {
@@ -41,7 +42,8 @@ namespace ConnectWebApp.GameController
                 }
                 else if (string.Equals("Block AI", controllerType, System.StringComparison.OrdinalIgnoreCase))
                 {
-
+                    playerMoveController = new AIPlayerMoveController();
+                    playerMoveController.GameEngine = gameEngine;
                 }
                 else if (string.Equals("Boss AI", controllerType, System.StringComparison.OrdinalIgnoreCase))
                 {

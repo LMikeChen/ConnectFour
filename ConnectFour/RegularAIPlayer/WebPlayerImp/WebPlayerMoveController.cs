@@ -32,8 +32,13 @@ namespace Players.WebPlayerImp
 
         public void Reset()
         {
+            player1Turn = true;
             player1 = new WebPlayer("Player 1", 'X');
             player2 = new WebPlayer("Player 2", 'O');
+        }
+        public IPlayer[] Players
+        {
+            get { return new IPlayer[] { player1, player2 }; }
         }
     }
 }

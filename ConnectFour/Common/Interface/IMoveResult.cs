@@ -5,7 +5,7 @@ namespace Common.Interface
     public interface IMoveResult
     {
         MoveResultStatus MoveResultStatus { get; set; }
-        IPlayer Winner { get; }
+        IPlayer Winner { get; set; }
         IMove[] Moves { get; }
     }
 }
