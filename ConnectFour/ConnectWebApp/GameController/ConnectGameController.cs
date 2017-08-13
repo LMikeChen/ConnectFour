@@ -1,19 +1,20 @@
 ﻿using GameEngine.Game;
 using Common.Interface;
-using Connect4ConsoleUI.Game.Player;
-using ConnectWebApp.Player;
+using Players.WebPlayerImp;
+using Players.Interface;
 
 namespace ConnectWebApp.GameController
 {
     public class ConnectGameController : IGameController
     {
         private ConnectFourGameEngine gameEngine;
-        private WebPlayer player1;
-        private WebPlayer player2;
 
-        private bool player1Turn;
+        private IPlayerMoveController playerMoveController;
         public ConnectGameController()
         {
+            // Default is web player vs web player
+            playerMoveController = new WebPlayerMoveController();
+
             Reset();
         }
 
@@ -23,17 +24,37 @@ namespace ConnectWebApp.GameController
 
         public IMoveResult ProcessMove(int column)
         {
-            WebPlayer player = player1Turn ? player1 : player2;
-            player1Turn = !player1Turn;
-            return gameEngine.ProcessMove(player, column);
+            IMoveResult result = playerMoveController.ExecuteMove(column);
+            return result;
+        }
+
+        public void ChangePlayerMoveController(string controllerType)
+        {
+            controllerType.Trim();
+
+            if(!string.IsNullOrWhiteSpace(controllerType))
+            {
+                if (string.Equals("Human", controllerType, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    playerMoveController = new WebPlayerMoveController();
+                    playerMoveController.GameEngine = gameEngine;
+                }
+                else if (string.Equals("Block AI", controllerType, System.StringComparison.OrdinalIgnoreCase))
+                {
+
+                }
+                else if (string.Equals("Boss AI", controllerType, System.StringComparison.OrdinalIgnoreCase))
+                {
+
+                }
+            }
+            
         }
 
         public void Reset()
         {
-            player1 = new WebPlayer("Player 1", 'X');
-            player2 = new WebPlayer("Player 2", 'O');
-
             gameEngine = new ConnectFourGameEngine(6, 7);
+            playerMoveController.GameEngine = gameEngine;
         }
     }
 }

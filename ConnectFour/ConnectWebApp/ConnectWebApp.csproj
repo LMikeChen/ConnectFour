@@ -143,7 +143,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Player\WebPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +177,10 @@
     <ProjectReference Include="..\ConnectFour\GameEngine.csproj">
       <Project>{C01EDE28-39FA-494D-86D7-43BCA2F8A543}</Project>
       <Name>GameEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RegularAIPlayer\Players.csproj">
+      <Project>{37A77748-9B62-434C-B27D-30283F9551F9}</Project>
+      <Name>Players</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

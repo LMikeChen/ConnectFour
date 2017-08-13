@@ -7,8 +7,8 @@
     <ProjectGuid>{37A77748-9B62-434C-B27D-30283F9551F9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RegularAIPlayer</RootNamespace>
-    <AssemblyName>RegularAIPlayer</AssemblyName>
+    <RootNamespace>Players</RootNamespace>
+    <AssemblyName>Players</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -41,14 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player\AIPlayer.cs" />
+    <Compile Include="AIPlayerImp\AIPlayer.cs" />
+    <Compile Include="Interface\IPlayerMoveController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebPlayerImp\WebPlayer.cs" />
+    <Compile Include="WebPlayerImp\WebPlayerMoveController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{2E5A0CEA-0E6C-41E5-AAA9-9A9894156852}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConnectFour\GameEngine.csproj">
+      <Project>{C01EDE28-39FA-494D-86D7-43BCA2F8A543}</Project>
+      <Name>GameEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BossAIPlayerImp\" />
+    <Folder Include="HumanPlayerImp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

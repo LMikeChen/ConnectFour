@@ -1,10 +1,6 @@
 ﻿using Common.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace ConnectWebApp.Player
+namespace Players.WebPlayerImp
 {
     public class WebPlayer : IPlayer
     {
@@ -36,9 +32,5 @@ namespace ConnectWebApp.Player
             }
         }
 
-        public string MakeMove()
-        {
-            return "";
-        }
     }
 }

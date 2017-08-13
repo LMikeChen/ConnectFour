@@ -3,7 +3,7 @@
 using System;
 using Common.Interface;
 
-namespace RegularAIPlayer.Player
+namespace Players.AIPlayerImp
 {
     public class AIPlayer : IPlayer
     {

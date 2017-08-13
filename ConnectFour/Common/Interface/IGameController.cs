@@ -13,6 +13,9 @@ namespace Common.Interface
         IMoveResult ProcessMove( int column);
 
         void Reset();
+
+        void ChangePlayerMoveController(string controllerType);
+
        
     }
 }

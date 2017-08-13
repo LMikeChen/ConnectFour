@@ -6,6 +6,8 @@ namespace Common.Interface
 {
     public interface IPlayerController
     {
-        IMoveResult MakeMove();
+        IMoveResult MakeMove(int column);
+
+        void Reset();
     }
 }

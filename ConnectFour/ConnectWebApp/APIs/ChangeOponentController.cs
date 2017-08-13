@@ -28,7 +28,7 @@ namespace ConnectWebApp.APIs
         // PUT api/<controller>/5
         public void Put(string id, [FromBody]string value)
         {
-
+            connectGameController.ChangePlayerMoveController(id);
         }
     }
 }
