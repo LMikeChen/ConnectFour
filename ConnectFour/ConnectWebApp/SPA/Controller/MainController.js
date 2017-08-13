@@ -27,7 +27,7 @@
     {
         board[i] = new Array($scope.models.columns);
         for (j = 0; j < $scope.models.columns; j++) {
-            board[i][j] = "#";
+            board[i][j] = "";
         }
         
     }

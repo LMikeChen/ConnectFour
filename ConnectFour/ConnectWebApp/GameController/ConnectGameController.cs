@@ -14,10 +14,7 @@ namespace ConnectWebApp.GameController
         private bool player1Turn;
         public ConnectGameController()
         {
-            player1 = new WebPlayer("Player 1", 'X');
-            player2 = new WebPlayer("Player 2", 'O');
-
-            gameEngine = new ConnectFourGameEngine(6, 7);
+            Reset();
         }
 
         public int BoardRows { get { return gameEngine.BoardRows; } }
@@ -29,6 +26,14 @@ namespace ConnectWebApp.GameController
             WebPlayer player = player1Turn ? player1 : player2;
             player1Turn = !player1Turn;
             return gameEngine.ProcessMove(player, column);
+        }
+
+        public void Reset()
+        {
+            player1 = new WebPlayer("Player 1", 'X');
+            player2 = new WebPlayer("Player 2", 'O');
+
+            gameEngine = new ConnectFourGameEngine(6, 7);
         }
     }
 }

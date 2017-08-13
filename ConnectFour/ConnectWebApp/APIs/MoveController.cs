@@ -13,8 +13,7 @@ namespace ConnectWebApp.APIs
     public class MoveController : ApiController
     {
         private IGameController connectGameController;
-
-      //  [Inject]
+        
         public MoveController(IGameController connectGameController)
         {
             this.connectGameController = connectGameController;
@@ -24,12 +23,7 @@ namespace ConnectWebApp.APIs
         {
             get
             {
-                //if (connectGameController == null)
-                //{
-                //    connectGameController = connectGameController = DependencyResolver.Current.GetService<IGameController>();
-                //}
                 return connectGameController;
-
             }
         }
         

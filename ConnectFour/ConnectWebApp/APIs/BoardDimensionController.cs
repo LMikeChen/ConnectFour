@@ -14,10 +14,18 @@ namespace ConnectWebApp.APIs
     {
         private IGameController connectGameController;
 
-        public IGameController ConnectGameController { get {
-               return connectGameController ?? (connectGameController = DependencyResolver.Current.GetService<IGameController>());
-                
-            } }
+        public BoardDimensionController(IGameController connectGameController)
+        {
+            this.connectGameController = connectGameController;
+        }
+
+        public IGameController ConnectGameController
+        {
+            get
+            {
+                return connectGameController;
+            }
+        }
         // GET api/<controller>
         public IEnumerable<int> Get()
         {

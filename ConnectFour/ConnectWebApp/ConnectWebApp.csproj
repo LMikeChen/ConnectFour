@@ -120,6 +120,7 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\connect4-theme.css" />
     <Content Include="Global.asax" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\bootstrap.js" />

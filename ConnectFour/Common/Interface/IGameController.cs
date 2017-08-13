@@ -11,6 +11,8 @@ namespace Common.Interface
        int BoardColumns { get; }
 
         IMoveResult ProcessMove( int column);
+
+        void Reset();
        
     }
 }

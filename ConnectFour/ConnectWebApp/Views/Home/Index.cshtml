@@ -20,14 +20,14 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-
+    <link rel="stylesheet" href="~/css/connect4-theme.css">
 
 
     <script src="~/SPA/Controller/MainController.js"></script>
     <script src="~/SPA/App.js"></script>
 
     <title>Index</title>
-
+  
 </head >
 <body>
      <div ng-app="App" ng-controller="MainController">
@@ -36,7 +36,7 @@
              <ul>
                  <li>
                      <i ng-repeat="y in models.columnIds">
-                         <button type="button" class="btn btn-default" ng-click="inputMove(y)"> {{y}} </button>
+                         <button type="button" class="btn btn-default customButton" ng-click="inputMove(y)"> {{y}} </button>
                      </i>
 
                  </li>
@@ -47,7 +47,7 @@
                    
                     <li ng-repeat="row in models.gameBoard">
                         <i ng-repeat="col in row track by $index">
-                            <button type="button" class="btn btn-default">{{col}}</button>
+                            <button type="button" class="btn btn-default customButton">{{col}}</button>
                         </i>
 
                     </li>
