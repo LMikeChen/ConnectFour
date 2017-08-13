@@ -47,7 +47,9 @@ namespace ConnectWebApp.GameController
                 }
                 else if (string.Equals("Boss AI", controllerType, System.StringComparison.OrdinalIgnoreCase))
                 {
-
+                    // My regular AI is really good. I cannot beat it!
+                    playerMoveController = new AIPlayerMoveController();
+                    playerMoveController.GameEngine = gameEngine;
                 }
             }
             
