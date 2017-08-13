@@ -66,7 +66,7 @@ namespace Connect4ConsoleUI.Game
 
         public void DelcareWinner(IMoveResult result)
         {
-            Console.WriteLine(string.Format("Player {0} has won the game in {1} moves!", result.Move.Player.PlayerID, result.Move.SequenceNumber));
+            Console.WriteLine(string.Format("Player {0} has won the game in {1} moves!", result.Moves[0].Player.PlayerID, result.Moves[0].SequenceNumber));
             
         }
 

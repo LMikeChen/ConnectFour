@@ -67,43 +67,53 @@
     
         $http.put(moveUrl, JSON.stringify(columnId))
             .then(function (response) {
-                if (response.data)
-                {
+                if (response.data) {
                     $scope.boardDimensionTest = response;
 
                     var moveResultStatus = response.data.MoveResultStatus;
-                    var move = response.data.Move;
-                    if (moveResultStatus == 0) {
-                        var rowIndex = move.RowIndex;
-                        var colIndex = move.ColumnIndex;
-                        var player = move.Player;
-                        var playerId = player.PlayerID;
-                        $scope.models.gameBoard[rowIndex][colIndex] = playerId;
-                        $scope.gameInstruction = "Next player please make a move";
+
+                    var moves = response.data.Moves;
+
+                    if (moves) {
+                        for (var i = 0; i < moves.length; ++i) {
+
+                            var move = moves[i];
+                            if (move) {
+                                if (moveResultStatus == 0) {
+                                    var rowIndex = move.RowIndex;
+                                    var colIndex = move.ColumnIndex;
+                                    var player = move.Player;
+                                    var playerId = player.PlayerID;
+                                    $scope.models.gameBoard[rowIndex][colIndex] = playerId;
+                                    $scope.gameInstruction = "Next player please make a move";
+                                }
+                                else if (moveResultStatus == 1) {
+                                    var rowIndex = move.RowIndex;
+                                    var colIndex = move.ColumnIndex;
+                                    var player = move.Player;
+                                    var playerId = player.PlayerID;
+                                    $scope.models.gameBoard[rowIndex][colIndex] = playerId;
+                                    $scope.gameInstruction = player.PlayerName + " has won the game in " + move.SequenceNumber + " moves!";
+                                }
+                                else if (moveResultStatus == 4) {
+                                    $scope.gameInstruction = "Invalid move, please try again.";
+                                }
+                                else if (moveResultStatus == 3) {
+                                    $scope.gameInstruction = "Tie game! Good luck next time!";
+                                }
+                            }
+                        }
                     }
-                    else if (moveResultStatus == 1)
+                    else
                     {
-                        var rowIndex = move.RowIndex;
-                        var colIndex = move.ColumnIndex;
-                        var player = move.Player;
-                        var playerId = player.PlayerID;
-                        $scope.models.gameBoard[rowIndex][colIndex] = playerId;
-                        $scope.gameInstruction = player.PlayerName + " has won the game in " + move.SequenceNumber + " moves!";
-                    }
-                    else if (moveResultStatus == 4)
-                    {
-                        $scope.gameInstruction = "Invalid move, please try again.";
-                    }
-                    else if (moveResultStatus == 3)
-                    {
-                        $scope.gameInstruction = "Tie game! Good luck next time!";
+
                     }
                 }
                 else
                 {
                     $scope.gameInstruction = "Input request failed";
                 }
-                
+            
 
             });
 

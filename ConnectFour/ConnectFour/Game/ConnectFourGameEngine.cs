@@ -33,13 +33,14 @@ namespace GameEngine.Game
 
                 if (result.MoveResultStatus == MoveResultStatus.Success)
                 {
-                    if (IsWinningMove(result.Move))
+                    IMove move = result.Moves[0];
+                    if (IsWinningMove(move))
                     {
                         result.MoveResultStatus = MoveResultStatus.GameOver;
                         winningResult = result;
                         isGameOver = true;
                     }
-                    else if (result.Move.SequenceNumber >= gameBoard.BoardSize - 1)
+                    else if (move.SequenceNumber >= gameBoard.BoardSize - 1)
                     {
                         result.MoveResultStatus = MoveResultStatus.GameTie;
                     }

@@ -6,6 +6,6 @@ namespace Common.Interface
     {
         MoveResultStatus MoveResultStatus { get; set; }
         IPlayer Winner { get; }
-        IMove Move { get; }
+        IMove[] Moves { get; }
     }
 }

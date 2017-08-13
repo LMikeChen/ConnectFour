@@ -8,7 +8,8 @@ namespace Common.Data
     {
         public MoveResult(IMove move)
         {
-            this.Move = move;
+            this.Moves = new IMove[2];
+            Moves[0] = move;
             this.MoveResultStatus = MoveResultStatus.Success;
         }
 
@@ -21,6 +22,6 @@ namespace Common.Data
 
         public IPlayer Winner { get; set; }
 
-        public IMove Move { get; private set; }
+        public IMove[] Moves { get; private set; }
     }
 }
