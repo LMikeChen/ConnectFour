@@ -132,7 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIs\BoardDimensionController.cs" />
+    <Compile Include="APIs\ChangeOponentController.cs" />
     <Compile Include="APIs\MoveController.cs" />
+    <Compile Include="APIs\ResetGameController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

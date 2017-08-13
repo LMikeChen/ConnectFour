@@ -7,6 +7,8 @@
         columnIds: [],
         gameBoard: [],
     };
+
+    $scope.selectedOponent = "Human";
     $scope.gameInstruction = "Player 1 click a column number to start";
 
     var boardDimensionUrl = location.origin + "/api/BoardDimension"
@@ -32,8 +34,33 @@
         
     }
     $scope.models.gameBoard = board;
-    
-   
+
+    // Process user change oponent
+    $scope.changeOponent = function () {
+
+
+        var moveUrl = location.origin + "/api/ChangeOponent/" + $scope.selectedOponent;
+
+        $http.put(moveUrl, JSON.stringify($scope.selectedOponent))
+            .then(function (response) {
+                $scope.gameInstruction = "Opponent changed to " + $scope.selectedOponent;
+            });
+      
+    }
+
+    // Process user change oponent
+    $scope.reset = function () {
+
+        var moveUrl = location.origin + "/api/ResetGame";
+
+        $http.post(moveUrl, JSON.stringify("1"))
+            .then(function (response) {
+                ResetBoard();
+                $scope.gameInstruction = " Game Cleared";
+            });
+    }
+
+    // Process user input
     $scope.inputMove = function (columnId)
     {
         var moveUrl = location.origin + "/api/Move/" + columnId;
@@ -80,6 +107,17 @@
 
             });
 
+    }
+
+    // Utility functions
+    function ResetBoard()
+    {
+        for (i = 0; i < $scope.models.rows; i++) {
+            for (j = 0; j < $scope.models.columns; j++) {
+                $scope.models.gameBoard[i][j] = "";
+            }
+
+        }
     }
 }
 

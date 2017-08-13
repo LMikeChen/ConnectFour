@@ -31,18 +31,29 @@
 </head >
 <body>
      <div ng-app="App" ng-controller="MainController">
-         
-         <div>
-             <ul>
-                 <li>
-                     <i ng-repeat="y in models.columnIds">
-                         <button type="button" class="btn btn-default customButton" ng-click="inputMove(y)"> {{y}} </button>
-                     </i>
+         <div style="width:800px; margin:40px auto;">
+            <div>
+                <span>         </span>
+            You Vs. <select id="Select1" ng-change="changeOponent()" ng-model="selectedOponent">
+                    <option>Human</option>
+                    <option>AI</option>
+                    <option>Super AI</option>
+                </select>
+                <input id="Button1" type="button" value="Reset" ng-click="reset()"/>
+                <span>        </span>
+            </div>
 
-                 </li>
+            <div>
+                <ul>
+                    <li>
+                        <i ng-repeat="y in models.columnIds">
+                            <button type="button" class="btn btn-default customButton" ng-click="inputMove(y)"> {{y}} </button>
+                        </i>
+
+                    </li>
             </ul>
         </div>
-         <div>
+            <div>
                 <ol>
                    
                     <li ng-repeat="row in models.gameBoard">
@@ -52,11 +63,12 @@
 
                     </li>
                 </ol>
-         </div>
+            </div>
 
-         <div>
-             <span>{{gameInstruction}}</span>
-         </div>
+            <div>
+                <span>{{gameInstruction}}</span>
+            </div>
+        </div>
      </div>
 </body>
 </html >
