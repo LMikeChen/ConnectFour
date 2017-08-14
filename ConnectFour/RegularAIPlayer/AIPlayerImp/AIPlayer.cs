@@ -99,8 +99,8 @@ namespace Players.AIPlayerImp
                 {
                     result.BlockAmount += rightBlockCount;
                     result.BlockAmount += leftBlockCount;
-                    result.BlockDirections += rightBlockCount > 0? 1 : 0;
-                    result.BlockDirections += leftBlockCount > 0 ? 1 : 0;
+                    result.BlockDirections += (rightBlockCount > 0 || leftBlockCount > 0 )? 1 : 0;
+//                    result.BlockDirections += leftBlockCount > 0 ? 1 : 0;
                 }
             }
 
@@ -117,8 +117,8 @@ namespace Players.AIPlayerImp
                 {
                     result.BlockAmount += downRIghtBlockCount;
                     result.BlockAmount += upLeftBlockCount;
-                    result.BlockDirections += downRIghtBlockCount > 0 ? 1 : 0;
-                    result.BlockDirections += upLeftBlockCount > 0 ? 1 : 0;
+                    result.BlockDirections += (downRIghtBlockCount > 0 || upLeftBlockCount > 0 )? 1 : 0;
+                    //result.BlockDirections += upLeftBlockCount > 0 ? 1 : 0;
                 }
             }
 
@@ -135,8 +135,8 @@ namespace Players.AIPlayerImp
                 {
                     result.BlockAmount += downLeftBlockCount;
                     result.BlockAmount += upRightBlockCount;
-                    result.BlockDirections += downLeftBlockCount > 0 ? 1 : 0;
-                    result.BlockDirections += upRightBlockCount > 0 ? 1 : 0;
+                    result.BlockDirections += (downLeftBlockCount > 0 || upRightBlockCount > 0) ? 1 : 0;
+                    //result.BlockDirections += upRightBlockCount > 0 ? 1 : 0;
                 }
             }
             return result;
@@ -189,10 +189,14 @@ namespace Players.AIPlayerImp
                 {
                     count++;
                 }
-                else if(count > 1 && boardData[i, col] == Utilities.EmpptyCell && CheckBlow(boardData, row, i))
+                else if(count > 1 && boardData[i, col] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, i, col))
                 {
                     count++;
                     break;
+                }
+                else if (count == 0 && boardData[i, col] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, i, col))
+                {
+                    // first cell is blank, we still want to check
                 }
                 else
                 {
@@ -211,10 +215,14 @@ namespace Players.AIPlayerImp
                 {
                     count++;
                 }
-                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && CheckBlow(boardData, row, i))
+                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, row, i))
                 {
                     count++;
                     break;
+                }
+                else if (count == 0 && boardData[row, i] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, row, i))
+                {
+                    // first cell is blank, we still want to check
                 }
                 else
                 {
@@ -233,10 +241,14 @@ namespace Players.AIPlayerImp
                 {
                     count++;
                 }
-                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && CheckBlow(boardData, row, i))
+                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, row, i))
                 {
                     count++;
                     break;
+                }
+                else if (count == 0 && boardData[row, i] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, row, i))
+                {
+                    // first cell is blank, we still want to check
                 }
                 else
                 {
@@ -259,10 +271,16 @@ namespace Players.AIPlayerImp
                     cRow--;
                     cColumn--;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlow(boardData, cRow, cColumn))
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, cRow, cColumn))
                 {
                     count++;
                     break;
+                }
+                else if (count == 0 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, cRow, cColumn))
+                {
+                    // first cell is blank, we still want to check
+                    cRow--;
+                    cColumn--;
                 }
                 else
                 {
@@ -286,10 +304,16 @@ namespace Players.AIPlayerImp
                     cRow--;
                     cColumn++;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlow(boardData, cRow, cColumn))
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, cRow, cColumn))
                 {
                     count++;
                     break;
+                }
+                else if (count == 0 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, cRow, cColumn))
+                {
+                    // first cell is blank, we still want to check
+                    cRow--;
+                    cColumn++;
                 }
                 else
                 {
@@ -313,10 +337,16 @@ namespace Players.AIPlayerImp
                     cRow++;
                     cColumn--;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlow(boardData, cRow, cColumn))
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, cRow, cColumn))
                 {
                     count++;
                     break;
+                }
+                else if (count == 0 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, cRow, cColumn))
+                {
+                    // first cell is blank, we still want to check
+                    cRow++;
+                    cColumn--;
                 }
                 else
                 {
@@ -340,10 +370,16 @@ namespace Players.AIPlayerImp
                     cRow++;
                     cColumn++;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlow(boardData, cRow, cColumn))
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, cRow, cColumn))
                 {
                     count++;
                     break;
+                }
+                else if (count == 0 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlowNotEmpty(boardData, cRow, cColumn))
+                {
+                    // first cell is blank, we still want to check
+                    cRow++;
+                    cColumn++;
                 }
                 else
                 {
@@ -354,7 +390,7 @@ namespace Players.AIPlayerImp
             return count;
         }
 
-        private bool CheckBlow(char[,] boardData, int cRow, int cColumn)
+        private bool CheckBlowNotEmpty(char[,] boardData, int cRow, int cColumn)
         {
             return (((cColumn + 1) == boardData.GetLength(0)) ||
                     ((cColumn + 1) < boardData.GetLength(0) && boardData[cRow, cColumn + 1] != Utilities.EmpptyCell));

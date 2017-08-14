@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="AIPlayerMoveControllerTests\TestCase1Expect4.cs" />
     <Compile Include="AIPlayerMoveControllerTests\TestCase2Expect3 .cs" />
+    <Compile Include="AIPlayerMoveControllerTests\TestCase5Expect4.cs" />
     <Compile Include="AIPlayerMoveControllerTests\TestCase4Expect4.cs" />
     <Compile Include="AIPlayerMoveControllerTests\TestCase3NotExpect1.cs" />
     <Compile Include="AIPlayerMoveControllerTests\TestCase2Expect4.cs" />
