@@ -26,14 +26,17 @@ namespace Players.BossAIPlayerImp
             for (int i = 0; i < boardData.GetLength(1); ++i)
             {
                 int rowIndex = GetRow(i, boardData);
-                IMove move = new ConnectMove(this, 0, rowIndex, i);
-
-                if(gameEngine.IsWinningMove(move))
+                if (rowIndex >= 0)
                 {
-                    CalculationResult result = new CalculationResult(rowIndex, i, boardData.GetLength(1));
-                    result.IsWinningMove = true;
+                    IMove move = new ConnectMove(this, 0, rowIndex, i);
 
-                    return result;
+                    if (gameEngine.IsWinningMove(move))
+                    {
+                        CalculationResult result = new CalculationResult(rowIndex, i, boardData.GetLength(1));
+                        result.IsWinningMove = true;
+
+                        return result;
+                    }
                 }
             }
             return base.CalculateResult(gameEngine, otherPlayerID);
