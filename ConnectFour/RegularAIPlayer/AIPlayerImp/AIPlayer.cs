@@ -189,7 +189,8 @@ namespace Players.AIPlayerImp
                 {
                     count++;
                 }
-                else if(count > 1 && boardData[i, col] == Utilities.EmpptyCell)
+                else if(count > 1 && boardData[i, col] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
+                                                                                   ((col + 1) < boardData.GetLength(1) && boardData[i, col - 1] != Utilities.EmpptyCell)))
                 {
                     count++;
                     break;
@@ -211,7 +212,8 @@ namespace Players.AIPlayerImp
                 {
                     count++;
                 }
-                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell)
+                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
+                                                                                    ((col + 1) < boardData.GetLength(1) && boardData[i, col - 1] != Utilities.EmpptyCell)))
                 {
                     count++;
                     break;
@@ -233,7 +235,8 @@ namespace Players.AIPlayerImp
                 {
                     count++;
                 }
-                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell)
+                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
+                                                                                    ((col + 1) < boardData.GetLength(1) && boardData[i, col - 1] != Utilities.EmpptyCell)))
                 {
                     count++;
                     break;
@@ -259,7 +262,8 @@ namespace Players.AIPlayerImp
                     cRow--;
                     cColumn--;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell)
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
+                                                                                           ((col + 1) < boardData.GetLength(1) && boardData[cRow, col - 1] != Utilities.EmpptyCell)))
                 {
                     count++;
                     break;
@@ -286,7 +290,8 @@ namespace Players.AIPlayerImp
                     cRow--;
                     cColumn++;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell)
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
+                                                                                           ((col + 1) < boardData.GetLength(1) && boardData[cRow, col - 1] != Utilities.EmpptyCell)))
                 {
                     count++;
                     break;
@@ -313,7 +318,8 @@ namespace Players.AIPlayerImp
                     cRow++;
                     cColumn--;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell)
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
+                                                                                           ((col + 1) < boardData.GetLength(1) && boardData[cRow, col - 1] != Utilities.EmpptyCell)))
                 {
                     count++;
                     break;
@@ -340,7 +346,8 @@ namespace Players.AIPlayerImp
                     cRow++;
                     cColumn++;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell)
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && (((col +1) == boardData.GetLength(1)) ||
+                         ((col + 1) < boardData.GetLength(1) && boardData[cRow, col - 1] != Utilities.EmpptyCell)))
                 {
                     count++;
                     break;
