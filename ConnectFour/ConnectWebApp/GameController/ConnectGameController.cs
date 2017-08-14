@@ -3,6 +3,7 @@ using Common.Interface;
 using Players.WebPlayerImp;
 using Players.Interface;
 using Players.AIPlayerImp;
+using Players.BossAIPlayerImp;
 
 namespace ConnectWebApp.GameController
 {
@@ -42,13 +43,14 @@ namespace ConnectWebApp.GameController
                 }
                 else if (string.Equals("Block AI", controllerType, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    playerMoveController = new AIPlayerMoveController();
+                    AIPlayer aiPlayer = new AIPlayer("AI Player", 'A');
+                    playerMoveController = new AIPlayerMoveController(aiPlayer);
                     playerMoveController.GameEngine = gameEngine;
                 }
                 else if (string.Equals("Boss AI", controllerType, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    // My regular AI is really good. I cannot beat it!
-                    playerMoveController = new AIPlayerMoveController();
+                    BossAIPlayer aiPlayer = new BossAIPlayer("AI Player", 'B');
+                    playerMoveController = new AIPlayerMoveController(aiPlayer);
                     playerMoveController.GameEngine = gameEngine;
                 }
             }

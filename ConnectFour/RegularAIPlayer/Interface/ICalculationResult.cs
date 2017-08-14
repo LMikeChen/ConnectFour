@@ -13,6 +13,7 @@ namespace Players.Interface
         int BlockDirections { get; set; }
         int BlockAmount { get; set; }
         bool BlocksWin { get; set; }
+        bool IsWinningMove { get; set; }
         int Connects { get; set; }
     }
 }

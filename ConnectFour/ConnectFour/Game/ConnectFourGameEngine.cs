@@ -57,7 +57,7 @@ namespace GameEngine.Game
 
         #endregion
 
-        private bool IsWinningMove(IMove move)
+        public bool IsWinningMove(IMove move)
         {
             char playerId = move.Player.PlayerID;
             char[,] boardData = gameBoard.BoardData;

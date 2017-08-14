@@ -22,6 +22,7 @@ namespace Players.Data
         public int BlockDirections { get; set; }
        public int BlockAmount { get; set; }
        public bool BlocksWin { get; set; }
+        public bool IsWinningMove { get; set; }
        public int Connects { get; set; }
 
         public int CompareTo(object obj)

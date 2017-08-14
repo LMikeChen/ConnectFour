@@ -14,5 +14,7 @@ namespace GameEngine.Interface
         int BoardColumns { get; }
 
         IMoveResult ProcessMove(IPlayer player, int column);
+
+        bool IsWinningMove(IMove move);
     }
 }

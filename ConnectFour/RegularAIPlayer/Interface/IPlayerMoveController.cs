@@ -15,8 +15,6 @@ namespace Players.Interface
 
         IGameEngine GameEngine { get; set; }
 
-        void Reset();
-
         IPlayer[] Players { get; }
 
     }

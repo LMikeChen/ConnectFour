@@ -14,9 +14,10 @@ namespace Players.AIPlayerImp
     {
         private IPlayer webPlayer;
         private AIPlayer aiPlyaer;
-        public AIPlayerMoveController()
+        public AIPlayerMoveController(AIPlayer aiPlayer)
         {
-            Reset();
+            webPlayer = new WebPlayer("Player 1", 'X');
+            aiPlyaer = aiPlayer;
         }
         public IGameEngine GameEngine { get; set; }
 
@@ -35,12 +36,6 @@ namespace Players.AIPlayerImp
                 moveResult.Winner = aiMoveResult.Winner;
             }
             return moveResult;
-        }
-
-        public void Reset()
-        {
-            webPlayer = new WebPlayer("Player 1", 'X');
-            aiPlyaer = new AIPlayer("AI Player", 'A');
         }
 
         public IPlayer[] Players

@@ -16,17 +16,17 @@ namespace PlayerUnitTests.AIPlayerMoveControllerTests
         [TestMethod]
         public void TestMethod1()
         {
-            AIPlayerMoveController aiController = new AIPlayerMoveController();
+            AIPlayer aiPlayer = new AIPlayer("AI Player", 'A');
+            AIPlayerMoveController aiController = new AIPlayerMoveController(aiPlayer);
             setup.SetData(new char[,] {
                 {' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', 'X', 'I', 'X', ' '}
+                {' ', ' ', ' ', 'X', 'A', 'X', ' '}
             });
-
-            AIPlayer aiPlayer = new AIPlayer("AI Player", 'A');
+            
             WebPlayer webPlayer = new WebPlayer("Player 1", 'X');
 
             int actualMove = aiPlayer.GenerateMove(setup.GameEngine, webPlayer);

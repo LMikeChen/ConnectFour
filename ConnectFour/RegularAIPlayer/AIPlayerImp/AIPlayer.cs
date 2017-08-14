@@ -24,7 +24,7 @@ namespace Players.AIPlayerImp
         {
             char[,] boardData = gameEngine.BoardData;
 
-            ICalculationResult result = CalculateBlocks(gameEngine.BoardData, otherPlayer.PlayerID);
+            ICalculationResult result = CalculateResult(gameEngine, otherPlayer.PlayerID);
 
             if (result == null)
             {
@@ -38,8 +38,10 @@ namespace Players.AIPlayerImp
 
         #region
 
-        private ICalculationResult CalculateBlocks(char[,] boardData, char otherPlayerID)
+        protected virtual ICalculationResult CalculateResult(IGameEngine gameEngine, char otherPlayerID)
         {
+            char[,] boardData = gameEngine.BoardData;
+
             ICalculationResult max = null;
             for (int i = 0; i < boardData.GetLength(1); ++i)
             {
@@ -57,7 +59,7 @@ namespace Players.AIPlayerImp
             return max;
         }
 
-        private ICalculationResult CalculateColumnBlocks(int row, int col, char[,] boardData, char otherPlayerID)
+        protected ICalculationResult CalculateColumnBlocks(int row, int col, char[,] boardData, char otherPlayerID)
         {
             int totalBlcokCount = 0;
 
@@ -136,7 +138,7 @@ namespace Players.AIPlayerImp
 
         }
 
-        private int DownBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
+        protected int DownBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
         {
             int count = 0;
             for(int i = row + 1; i < boardData.GetLength(0); ++i)
@@ -158,7 +160,7 @@ namespace Players.AIPlayerImp
             return count;
         }
 
-        private int LeftBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
+        protected int LeftBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
         {
             int count = 0;
             for (int i = col - 1; i >= 0; --i)
@@ -180,7 +182,7 @@ namespace Players.AIPlayerImp
             return count;
         }
 
-        private int RightBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
+        protected int RightBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
         {
             int count = 0;
             for (int i = col + 1; i < boardData.GetLength(1); ++i)
@@ -202,7 +204,7 @@ namespace Players.AIPlayerImp
             return count;
         }
 
-        private int UpLeftBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
+        protected int UpLeftBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
         {
             int count = 0;
             int cRow = row - 1;
@@ -229,7 +231,7 @@ namespace Players.AIPlayerImp
             return count;
         }
 
-        private int UpRightBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
+        protected int UpRightBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
         {
             int count = 0;
             int cRow = row - 1;
@@ -256,7 +258,7 @@ namespace Players.AIPlayerImp
             return count;
         }
 
-        private int DownLeftBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
+        protected int DownLeftBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
         {
             int count = 0;
             int cRow = row + 1;
@@ -283,7 +285,7 @@ namespace Players.AIPlayerImp
             return count;
         }
 
-        private int DownRightBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
+        protected int DownRightBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
         {
             int count = 0;
             int cRow = row + 1;
@@ -310,7 +312,7 @@ namespace Players.AIPlayerImp
             return count;
         }
 
-        private int GetRow(int column, char[,] boardData)
+        protected int GetRow(int column, char[,] boardData)
         {
             for(int i = boardData.GetLength(0) - 1; i >=0; i--)
             {
