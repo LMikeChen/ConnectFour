@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Data;
 using Common.Interface;
 using GameEngine.Interface;
 using Players.WebPlayerImp;
@@ -29,11 +30,19 @@ namespace Players.AIPlayerImp
             {
                 int aiMove = aiPlyaer.GenerateMove(GameEngine, webPlayer);
 
-                IMoveResult aiMoveResult = GameEngine.ProcessMove(aiPlyaer, aiMove);
+                if (aiMove != -1)
+                {
+                    IMoveResult aiMoveResult = GameEngine.ProcessMove(aiPlyaer, aiMove);
 
-                moveResult.MoveResultStatus = aiMoveResult.MoveResultStatus;
-                moveResult.Moves[1] = aiMoveResult.Moves[0];
-                moveResult.Winner = aiMoveResult.Winner;
+                    moveResult.MoveResultStatus = aiMoveResult.MoveResultStatus;
+                    moveResult.Moves[1] = aiMoveResult.Moves[0];
+                    moveResult.Winner = aiMoveResult.Winner;
+                }
+                else
+                {
+                    moveResult.Winner = webPlayer;
+                    moveResult.MoveResultStatus = Enums.MoveResultStatus.GameOver;
+                }
             }
             return moveResult;
         }
