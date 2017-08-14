@@ -5,7 +5,9 @@ using Common.Interface;
 using GameEngine.Interface;
 using Players.Interface;
 using Common.Data;
+using GameEngine.Game;
 using Players.Data;
+using Players.WebPlayerImp;
 
 namespace Players.AIPlayerImp
 {
@@ -52,7 +54,10 @@ namespace Players.AIPlayerImp
                     ICalculationResult current = CalculateColumnBlocks(rowIndex, i, boardData, otherPlayerID);
                     if(max == null || current.CompareTo( max) == 1)
                     {
-                        max = current;
+                        if (!IsOpponentNextMoveWinningMove(gameEngine, current, boardData, otherPlayerID))
+                        {
+                            max = current;
+                        }
                     }
                 }
             }
@@ -138,6 +143,43 @@ namespace Players.AIPlayerImp
 
         }
 
+        #region check one level down
+        protected bool IsOpponentNextMoveWinningMove(IGameEngine gameEngine, ICalculationResult current, char[,] boardData, char otherPlayer)
+        {
+            char[,] cloneData = CloneData(boardData, current);
+            for (int i = 0; i < boardData.GetLength(1); ++i)
+            {
+                int rowIndex = GetRow(i, cloneData);
+                if (rowIndex >= 0)
+                {
+                    IMove move = new ConnectMove(new WebPlayer("Player 1", otherPlayer), 0, rowIndex, i);
+                    if (ConnectFourGameEngine.IsWinningMove(move, cloneData))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private char[,] CloneData(char[,] boardData, ICalculationResult current)
+        {
+            char[,] cloneData = new char[boardData.GetLength(0), boardData.GetLength(1)];
+
+            for (int i = 0; i < boardData.GetLength(0); ++i)
+            {
+                for (int j = 0; j < boardData.GetLength(0); ++j)
+                {
+                    cloneData[i, j] = boardData[i, j];
+                }
+            }
+            cloneData[current.RowIndex, current.ColumnIndex] = this.PlayerID;
+            return cloneData;
+        }
+        #endregion
+
+        #region simple check
         protected int DownBlockCount(int row, int col, char[,] boardData, char otherPlayerID)
         {
             int count = 0;
@@ -312,6 +354,7 @@ namespace Players.AIPlayerImp
             return count;
         }
 
+        #endregion
         protected int GetRow(int column, char[,] boardData)
         {
             for(int i = boardData.GetLength(0) - 1; i >=0; i--)
