@@ -12,12 +12,12 @@ ConnectWebAPP- is the SPA, and has full functionalities
 Connect4ConsoleUI- is the console version of the game. Currently only allows Player vs. Player game
   Win and Tie scenarios are implemented
 
-Common-defines data classes and interfaces shared by all other projects
+Common- defines data classes and interfaces shared by all other projects
 
 GameEngine - this is the core gameing logic used by both ConnectWebAPP and Connect4ConsoleUI
 
-Players - this implements different player types: human player, AIPlayer, BossAIPlayer
+Players - this implements different player types: human player, AIPlayer, BossAIPlayer. Each AI player type has it's own move generation strategy, and which is consumed by the GameEngine through game controller.
 
 PlayerUnitTests - unit tests to test AI player logics that generate next move, based on current board data.
 
-Persistence to DB is started, but not done. The idea is to save to a no-sql DB for simplicity.
+Persistence to DB has started, but not done. The idea is to save to a no-sql DB for simplicity.
