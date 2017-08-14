@@ -189,8 +189,7 @@ namespace Players.AIPlayerImp
                 {
                     count++;
                 }
-                else if(count > 1 && boardData[i, col] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
-                                                                                   ((col + 1) < boardData.GetLength(1) && boardData[i, col - 1] != Utilities.EmpptyCell)))
+                else if(count > 1 && boardData[i, col] == Utilities.EmpptyCell && CheckBlow(boardData, row, i))
                 {
                     count++;
                     break;
@@ -212,8 +211,7 @@ namespace Players.AIPlayerImp
                 {
                     count++;
                 }
-                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
-                                                                                    ((col + 1) < boardData.GetLength(1) && boardData[i, col - 1] != Utilities.EmpptyCell)))
+                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && CheckBlow(boardData, row, i))
                 {
                     count++;
                     break;
@@ -235,8 +233,7 @@ namespace Players.AIPlayerImp
                 {
                     count++;
                 }
-                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
-                                                                                    ((col + 1) < boardData.GetLength(1) && boardData[i, col - 1] != Utilities.EmpptyCell)))
+                else if (count > 1 && boardData[row, i] == Utilities.EmpptyCell && CheckBlow(boardData, row, i))
                 {
                     count++;
                     break;
@@ -262,8 +259,7 @@ namespace Players.AIPlayerImp
                     cRow--;
                     cColumn--;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
-                                                                                           ((col + 1) < boardData.GetLength(1) && boardData[cRow, col - 1] != Utilities.EmpptyCell)))
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlow(boardData, cRow, cColumn))
                 {
                     count++;
                     break;
@@ -290,8 +286,7 @@ namespace Players.AIPlayerImp
                     cRow--;
                     cColumn++;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
-                                                                                           ((col + 1) < boardData.GetLength(1) && boardData[cRow, col - 1] != Utilities.EmpptyCell)))
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlow(boardData, cRow, cColumn))
                 {
                     count++;
                     break;
@@ -318,8 +313,7 @@ namespace Players.AIPlayerImp
                     cRow++;
                     cColumn--;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && (((col + 1) == boardData.GetLength(1)) ||
-                                                                                           ((col + 1) < boardData.GetLength(1) && boardData[cRow, col - 1] != Utilities.EmpptyCell)))
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlow(boardData, cRow, cColumn))
                 {
                     count++;
                     break;
@@ -346,8 +340,7 @@ namespace Players.AIPlayerImp
                     cRow++;
                     cColumn++;
                 }
-                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && (((col +1) == boardData.GetLength(1)) ||
-                         ((col + 1) < boardData.GetLength(1) && boardData[cRow, col - 1] != Utilities.EmpptyCell)))
+                else if (count > 1 && boardData[cRow, cColumn] == Utilities.EmpptyCell && CheckBlow(boardData, cRow, cColumn))
                 {
                     count++;
                     break;
@@ -361,6 +354,11 @@ namespace Players.AIPlayerImp
             return count;
         }
 
+        private bool CheckBlow(char[,] boardData, int cRow, int cColumn)
+        {
+            return (((cColumn + 1) == boardData.GetLength(0)) ||
+                    ((cColumn + 1) < boardData.GetLength(0) && boardData[cRow, cColumn + 1] != Utilities.EmpptyCell));
+        }
         #endregion
         protected int GetRow(int column, char[,] boardData)
         {
